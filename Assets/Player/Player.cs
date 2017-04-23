@@ -33,6 +33,14 @@ public class Player : MonoBehaviour, IDamageable {
         }
     }
 
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+        bullet.Die();
+        Bullet.color colorOfCollision = bullet.bulletColor;
+        Hit(colorOfCollision);
+    }
+
     public bool IsPlayerHealthy()
     {
         return colorBars[Bullet.color.Blue].transform.localScale.y == 1f &&
@@ -72,7 +80,7 @@ public class Player : MonoBehaviour, IDamageable {
                 {
                     scoreManager.GotHit();
                     Vector3 barScale = colorBars[col].transform.localScale;
-                    barScale.y = Mathf.Clamp(barScale.y - colorHitDecrement, 0, 1);
+                    //barScale.y = Mathf.Clamp(barScale.y - colorHitDecrement, 0, 1);
                     colorBars[col].transform.localScale = barScale;
                 }
             }

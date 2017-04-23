@@ -167,12 +167,8 @@ public class StoryController : MonoBehaviour {
             {
                 _("You've done it...", 0f),
                 _("The pixel..., it's going back home again!"),
-                _("It will return from whence it came!"),
-                _("Filled with RGB goodness"),
-                _("To shine a light onto you in the darkest of nights."),
-                _("Pixel, pixel, shine so bright"),
-                _("Pixel there now out of sight."),
-                _("Goodnight sweet pixel"),
+                _("It will return to it's place among the vast screen of pixels."),
+                _("Filled with reds, greens, and blues!"),
                 _("Thanks for playing my first game ever."),
                 _("From my first Ludum Dare, LD38."),
                 _("It's not much, but it's mine"),
@@ -185,9 +181,9 @@ public class StoryController : MonoBehaviour {
     {
         sceneList.Add(new Scene(new List<TextDisplay>
             {
-                _("Finally, you've made it."),
-                _("The final level.  The final point at which you can achieve what you've set out to do."),
-                _("Make this bad pixel good again!"),
+                _("Here you are, finally ready to fill the pixel up with everything it needs."),
+                _("Reds, greens, and blue. All in moderation."),
+                _("All the pixels are helping now!"),
                 _("")
             }
         ));
@@ -203,15 +199,18 @@ public class StoryController : MonoBehaviour {
     {
         sceneList.Add(new Scene(new List<TextDisplay>
             {
-                _("Okay, that was all easy.  Now let's randomize things a bit."),
-                _("You can only get one color at a time!"),
+                _("We need to mix things up some."),
+                _("A pixel is more than just one color."),
+                _("And a pixel is not made up of 3 colors."),
+                _("A pixel can be many colors, and when it works together with other pixels..."),
+                _("the colors they shine are vivid and bright!"),
                 _("")
             }
         ));
 
         completion = new Scene(new List<TextDisplay>
         {
-            _("Oh, you finished that? Well, I think you need a greater challenge."),
+            _("Pixels that work together create beauty.  A single bad pixel ruins the screen."),
             _("", 4f)
         });
     }
@@ -220,19 +219,15 @@ public class StoryController : MonoBehaviour {
     {
         sceneList.Add(new Scene(new List<TextDisplay>
             {
-                _("Watch out for the red and blue ones now.", 1f),
-                _("I bet you already knew that."),
-                _("I bet you think you are smart."),
-                _("A real John Carmack."),
+                _("Oh, that green from before wasn't good enough."),
                 _("")
             }
         ));
 
         completion = new Scene(new List<TextDisplay>
         {
-            _("I'd congratulate you, but frankly, that had the worst completion time.  Check the leader boards!", 0f),
-            _("Hahaha, you thought there were leader boards!  It's a Ludam Dare Compo entry!  You should be glad this game hasn't crashed your computer!"),
-            _("", 8f)
+            _("Okay, I think you got the hang of this.", 0f),
+            _("")
         });
     }
 
@@ -240,14 +235,14 @@ public class StoryController : MonoBehaviour {
     {
         sceneList.Add(new Scene(new List<TextDisplay>
             {
-                _("Watch out for the red ones!", 1f),
+                _("The pixel needs more blue and green.", 0f),
                 _("")
             }
         ));
 
         completion = new Scene(new List<TextDisplay>
             {
-                _("Congratulations!", 0f),
+                _("Okay, good. Let's see what else the pixel needs.", 0f),
                 _("")
             }
         );
@@ -257,15 +252,14 @@ public class StoryController : MonoBehaviour {
     {
         sceneList.Add(new Scene(new List<TextDisplay>
             {
-                _("Don't be afraid of the colors, grab them all!", 1f),
-                _(""),
-                _("Though, once it fills up with one color, more of that color will only hurt it.", 10f)
+                _("You are free little pixel, move around and collect those colors!", 1f),
+                _("The other pixels are sharing what color they can!"),
             }
         ));
 
         completion = new Scene(new List<TextDisplay>
             {
-                _("Congratulations!",0f),
+                _("Good, good, but we need more color...",0f),
                 _("")
             }
         );
@@ -276,12 +270,13 @@ public class StoryController : MonoBehaviour {
         sceneList.Add(new Scene
         {
             text = new List<TextDisplay> {
-                _("Look!", 0),
-                _("It's a pixel!"),
-                _("A dead pixel!"),
-                _("How sad. =("),
-                _("Well, almost dead.  It's got a bit of life left in it."),
-                _("It just needs some help getting its color back."),
+                _("A dead pixel", 0),
+                _("Look, it's missing its color.", 2f),
+                _("No red."),
+                _("No green.", 2f),
+                _("No blue.", 2f),
+                _("Almost, it's almost dead. But there is still hope."),
+                _("The other pixels on the screen are going to share their colors!"),
                 _("")
             },
             callback = delegate ()

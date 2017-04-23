@@ -36,16 +36,11 @@ public class GameManager : MonoBehaviour {
 
     public Scene sceneToRun;
     private Action sceneCompleteHandler;
-    private bool triggerUpdateTransition;
+    private bool sceneIsEnding = false;
 
     private void ShuffleColors()
     {
-        ShuffleColors(Bullet.availableColors);
-    }
-
-    private void ShuffleColors(List<Bullet.color> availableColors)
-    {
-        StartCoroutine(ColorShuffle(availableColors));
+        StartCoroutine(ColorShuffle());
     }
 
     private void EnableShuffleColorIcon(Bullet.color color)
@@ -68,29 +63,35 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    private IEnumerator ColorShuffle(List<Bullet.color> availableColors)
+    private IEnumerator ColorShuffle()
     {
         friendlyColors.Clear();
+
+        List<Bullet.color> workingColors = new List<Bullet.color>() { Bullet.color.Blue, Bullet.color.Red, Bullet.color.Green };
         
         foreach(Bullet.color color in fullColors)
         {
-            availableColors.Remove(color);
+            workingColors.Remove(color);
         }
 
-        if ( availableColors.Count <= 0 )
+        if (workingColors.Count <= 0 )
         {
-            storyController.TriggerCompletion(scoreManager.StopScoring(), delegate ()
+            if ( sceneIsEnding == false )
             {
-                sceneCompleteHandler();
-            });
+                sceneIsEnding = true;
+                storyController.TriggerCompletion(scoreManager.StopScoring(), delegate ()
+                {
+                    sceneCompleteHandler();
+                });
+            }
         } else {
-            Bullet.color pickedColor = availableColors.RandomElement<Bullet.color>();
+            Bullet.color pickedColor = workingColors.RandomElement<Bullet.color>();
 
             EnableShuffleColorIcon(pickedColor);
             friendlyColors.Add(pickedColor);
 
             yield return new WaitForSeconds(15f);
-            ShuffleColors(availableColors);
+            ShuffleColors();
         }
     }
 
@@ -171,7 +172,7 @@ public class GameManager : MonoBehaviour {
             case Scene.GameOver:
                 storyController.PrepareScenes(Scene.GameOver);
                 ScenesStartGameOver();
-                sceneCompleteHandler = EnableStartMenu;
+                sceneCompleteHandler = delegate() { };
                 break;
         }
 	}
@@ -182,8 +183,14 @@ public class GameManager : MonoBehaviour {
         storyController.StartStory();
         zoomController.StartZoomingOut(delegate ()
         {
-            EnableStartMenu();
+            StartCoroutine(DelayStartScreen()); 
         });
+    }
+
+    private IEnumerator DelayStartScreen()
+    {
+        yield return new WaitForSeconds(18);
+        EnableStartMenu();
     }
 
     private void EnableGameOver()
@@ -249,11 +256,8 @@ public class GameManager : MonoBehaviour {
             storyController.StartStory();
         });
     }
-        
-    // Update is called once per frame
-    void Update () {
-        zoomController.Zoom();
-    }
+       
+    void Update () {}
 
     internal void EnableStartMenu()
     {

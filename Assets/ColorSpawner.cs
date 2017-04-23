@@ -18,7 +18,9 @@ public class ColorSpawner : MonoBehaviour {
         bulletPrefabs.Add(redBulletPrefab);
         bulletPrefabs.Add(blueBulletPrefab);
         bulletPrefabs.Add(greenBulletPrefab);
+
         StartCoroutine(ShootBullets());
+
         gameManager = GameManager.GetGameManager();
         gameManager.AddSceneEnemy(gameObject);
     }

@@ -41,8 +41,8 @@ public class Bullet : MonoBehaviour {
     void Update () {
         float distanceThisFrame = speed * Time.deltaTime;
 
+        /*
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, distanceThisFrame, layerMask);
-
         Debug.DrawRay(transform.position, dir * distanceThisFrame * 3, Color.red);
 
         if (hit && hit.collider.gameObject.tag == Player.Tag)
@@ -50,6 +50,7 @@ public class Bullet : MonoBehaviour {
             HitTarget(hit.collider.gameObject);
             return;
         }
+        */
 
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
 	}
@@ -60,7 +61,7 @@ public class Bullet : MonoBehaviour {
         Die();
     }
 
-    private void Die()
+    public void Die()
     {
         gameManager.RemoveSceneEnemy(gameObject);
         Destroy(gameObject);

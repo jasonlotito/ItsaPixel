@@ -5,13 +5,8 @@ public class CameraController : MonoBehaviour {
     Transform playerTransform;
    
 	void Start () {
-        try
-        {
             playerTransform = GameObject.FindGameObjectWithTag(Player.Tag).transform;
-        } catch
-        {
-
-        }
+  
 	}
 	
 	void LateUpdate () {
