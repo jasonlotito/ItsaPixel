@@ -80,7 +80,7 @@ public class Player : MonoBehaviour, IDamageable {
                 {
                     scoreManager.GotHit();
                     Vector3 barScale = colorBars[col].transform.localScale;
-                    //barScale.y = Mathf.Clamp(barScale.y - colorHitDecrement, 0, 1);
+                    barScale.y = Mathf.Clamp(barScale.y - colorHitDecrement, 0, 1);
                     colorBars[col].transform.localScale = barScale;
                 }
             }

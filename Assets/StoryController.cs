@@ -166,8 +166,8 @@ public class StoryController : MonoBehaviour {
         sceneList.Add(new Scene(new List<TextDisplay>
             {
                 _("You've done it...", 0f),
-                _("The pixel..., it's going back home again!"),
-                _("It will return to it's place among the vast screen of pixels."),
+                _("The pixel, it's going home!"),
+                _("It will return to its place among the vast screen of pixels."),
                 _("Filled with reds, greens, and blues!"),
                 _("Thanks for playing my first game ever."),
                 _("From my first Ludum Dare, LD38."),
@@ -210,8 +210,9 @@ public class StoryController : MonoBehaviour {
 
         completion = new Scene(new List<TextDisplay>
         {
-            _("Pixels that work together create beauty.  A single bad pixel ruins the screen."),
-            _("", 4f)
+            _("Pixels that work together create beauty."),
+            _("A single bad pixel ruins the screen."),
+            _("")
         });
     }
 
